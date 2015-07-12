@@ -196,6 +196,12 @@ main {
     margin: 0.5em 0 0;
 }
 
+footer {
+    text-align: center;
+    font-size: small;
+    padding-bottom: 2em;
+}
+
 footer small {
     display: inline-block;
     width: 100%;

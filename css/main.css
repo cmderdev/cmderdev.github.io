@@ -16,11 +16,6 @@ textarea {
     text-shadow: none;
 }
 
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
 img {
     vertical-align: middle;
 }
@@ -202,22 +197,12 @@ footer {
     padding-bottom: 2em;
 }
 
-footer small {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-}
-
 code {
     padding: 1px 3px;
     border-radius: 2px;
     background-color: #eee;
     font-size: 0.9em;
     font-family: Consolas, monaco, monospace;
-}
-
-.flushright {
-    text-align: right;
 }
 
 /* -------------- Lists -------------- */
@@ -233,28 +218,38 @@ ul ol {
     list-style: none;
 }
 
-
-/* -------------- Helpers -------------- */
-
-.right {
-    float: right;
+/* lemonade.css */
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
 }
-
-.hidden {
-    display: none !important;
-    visibility: hidden;
-}
-
-.clearfix:before,
-.clearfix:after {
+.container:after {
+    content: "";
     display: table;
-    content: " ";
+    clear: both
 }
-
-.clearfix:after {
-    clear: both;
+.bit-1 {
+    width: 100%
 }
-
-.clearfix {
-    *zoom: 1;
+.bit-2 {
+    width: 50%
+}
+.bit-3 {
+    width: 33.33%
+}
+@media(max-width:480px) {
+    .bit-1, .bit-2, .bit-3, {
+        width: 100%
+    }
+}
+@media(min-width:480px) and (max-width:800px) {
+    .bit-1, .bit-2, .bit-3, .bit-5, .bit-7, .bit-9, .bit-11 {
+        width: 100%
+    }
+}
+@media(min-width:800px) and (max-width:1100px) {
+    .bit-2, .bit-7 {
+        width: 100%
+    }
 }

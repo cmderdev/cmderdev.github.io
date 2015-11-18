@@ -236,7 +236,8 @@ ul ol {
     width: 50%
 }
 .bit-3 {
-    width: 33.33%
+    width: 33.33%;
+    float: left;
 }
 @media(max-width:480px) {
     .bit-1, .bit-2, .bit-3, {

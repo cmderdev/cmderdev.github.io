@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css">
     <link rel="stylesheet" href="css/main.min.css" type="text/css">
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
 </head>
 
 <body>
@@ -72,18 +72,20 @@
                 </div>
 
                 <div class="bit-2">
-                    <a onclick="_gaq.push(['_trackEvent', 'Download', 'mini'])" href="https://github.com/cmderdev/cmder/releases/download/v1.3.3/cmder_mini.zip">
+                    <a id="mini" onclick="_gaq.push(['_trackEvent', 'Download', 'mini'])">
                         <button class="gray">Download mini</button>
                     </a>
                     <small>7.8MB</small>
                 </div>
                 <div class="bit-2">
-                    <a onclick="_gaq.push(['_trackEvent', 'Download', 'full'])" href="https://github.com/cmderdev/cmder/releases/download/v1.3.3/cmder.zip">
+                    <a id="full" onclick="_gaq.push(['_trackEvent', 'Download', 'full'])">
                         <button class="blue">Download full</button>
                     </a>
                     <small>(With git-for-windows) 100MB</small>
                     <small>
-                        <em><a onclick="_gaq.push(['_trackEvent', 'Download', 'full', '7z'])" href="https://github.com/cmderdev/cmder/releases/download/v1.3.3/cmder.7z">52MB 7z</a></em>
+                        <em>
+                            <a id="7z" onclick="_gaq.push(['_trackEvent', 'Download', 'full', '7z'])"></a>52MB 7z</a>
+                        </em>
                     </small>
                 </div>
 
@@ -196,7 +198,26 @@
             s.parentNode.insertBefore(ga, s);
         })();
     </script>
+    <script type="text/javascript" defer="defer">
+        $(document).ready(function () {
+            getLatestReleases();
+        })
 
+        function getLatestReleases() {
+            $.getJSON("https://api.github.com/repos/cmderdev/cmder/releases/latest").done(function (release) {
+                for (const asset of release.assets) {
+                    switch (asset.name) {
+                        case "cmder.zip":
+                            $("#full").attr("href", asset.browser_download_url);
+                        case "cmder_mini.zip":
+                            $("#mini").attr("href", asset.browser_download_url);
+                        case "cmder.7z":
+                            $("#7z").attr("href", asset.browser_download_url);
+                    }
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>

@@ -68,6 +68,7 @@
             <section class="download container">
 
                 <div class="bit-1">
+                    <h4 id="latest-version"></h4>
                     <a href="https://github.com/cmderdev/cmder">GitHub Repo</a> (for issues/requests/source)
                 </div>
 
@@ -209,6 +210,7 @@
 
         function getLatestReleases() {
             $.getJSON("https://api.github.com/repos/cmderdev/cmder/releases/latest").done(function (release) {
+                $("#latest-version").html("Latest Version: " + release.name);
                 for (const asset of release.assets) {
                     switch (asset.name) {
                         case "cmder.zip":

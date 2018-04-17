@@ -1,0 +1,28 @@
+# =========================
+# Cmder.net Home page
+# =========================
+
+# Reserved directory Workspace
+.workspace
+
+# =========================
+# Operating System Files
+# =========================
+
+# Temporary files and directories
+*~
+*.tmp
+.directory
+
+# OSX specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails and image file caches
+._*
+Thumbs.db
+ehthumbs.db
+
+# Folder config files
+Desktop.ini

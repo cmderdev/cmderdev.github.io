@@ -2,8 +2,8 @@
 # Cmder.net Home page
 # =========================
 
-# Reserved directory Workspace
-.workspace
+# Reserved hidden directory
+.*_space
 
 # =========================
 # Operating System Files

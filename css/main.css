@@ -78,35 +78,59 @@ h4 {
     font-size: 1.1em;
     text-rendering: optimizeLegibility;
 }
-button {
+.btn {
     display: block;
     padding: 12px 0;
     width: 100%;
     border: 1px solid #eee;
     border-radius: 4px;
-    background-color: #C4C4C4;
-    box-shadow: 1px 1px 1px 0px #ddd, inset 0 0 -3px rgba(0, 0, 0, 0.02);
+    background-color: #888;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.02) !important;
     color: #fff;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
     font-size: 1.1em;
+    outline: none;
+    text-decoration: none;
     -webkit-transition: background-color 0.3s;
     -moz-transition: background-color 0.3s;
     -ms-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
-button:hover {
+.btn:active:focus {
+    outline: none;
+    box-shadow: none;
+}
+.btn.btn-default {
+    border: 1px solid #eee;
+    background-color: #C4C4C4;
+    color: #eee;
+}
+.btn.btn-default:hover {
+    border: 1px solid #eee;
     background-color: #ccc;
-    box-shadow: 0px 0px 1px 0px #ddd;
+    color: #eee;
 }
-button.gray {
-    float: right;
+.btn.btn-default:active {
+    border: 1px solid #eee;
+    background-color: #bbb;
+    color: #eee;
 }
-button.blue {
+.btn.btn-primary {
+    border: 1px solid #eee;
     background-color: #3498db;
+    color: #eee;
 }
-button.blue:hover {
+.btn.btn-primary:hover {
+    border: 1px solid #eee;
     background-color: #5dade2;
+    color: #eee;
+}
+.btn.btn-primary:active {
+    /* the !important rule used to over-write bs's :disabled attr */
+    border: 1px solid #eee !important;
+    background-color: #1E90FF !important;
+    color: #eee !important;
 }
 
 /* -------------- Modules -------------- */

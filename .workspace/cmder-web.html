@@ -1,0 +1,449 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta id="viewport" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+        <title>Cmder.net Web Console</title>
+        <meta name="description" content="Cmder Terminal Web Console Prototype." />
+        <meta name="author" content="@DRSDavidSoft" />
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Source+Code+Pro:500,600,700" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.14.0/js/jquery.terminal.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.14.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+        <script src="https://rawgit.com/cvan/keyboardevent-key-polyfill/master/index.js"></script>
+
+        <!-- Example web recreation of Cmder terminal by David@Refoua.me -->
+
+        <script>
+
+            /**
+             *
+             * Cmder main object (contains handler, selector and events)
+             *
+             */
+
+            var cmder = {
+
+                id: 'cmder-terminal',
+                prompt: '[[;#cacaca;]λ] ',
+                handle: null,
+
+                strings: {
+                    WINDOWS_VER_STR          : "Microsoft Windows [Version 6.2.9200]",
+                    WINDOWS_COPYRIGHT_STR    : "(c) 2012 Microsoft Corporation. All rights reserved."
+                },
+
+                commands: {
+                    cls: function() {
+                        this.clear();
+                    },
+
+                    cd: function() {
+
+                        var list = [ '.git\\', 'bin\\', 'config\\', 'test\\', 'vendor\\' ];
+
+                        /* // this bit is not needed for now
+                        for (var i in list) if (list.hasOwnProperty(i)) {
+                            list[i] = '[[;#ffffff;]%s]'.replace( /\%s/g, list[i] );
+                        }
+
+                        console.log(list);
+                        */
+
+                        this.echo( list.join("\t") );
+
+                    },
+
+                    /*
+                    pwd: function() {
+
+                    }
+                    */
+
+                },
+
+                handler: {
+
+                    /*
+                    command: function(command) {
+                        if (command !== '') {
+                            try {
+                                var result = window.eval(command);
+                                if (result !== undefined) {
+                                    this.echo(new String(result));
+                                }
+
+                                //switch (command.toString().trim().tolowercase()
+
+                            } catch(e) {
+                                this.error(new String(e));
+                            }
+                        } else {
+                            this.echo('');
+                        }
+                    }
+                    */
+
+                    /*
+                    exception: function(exp) {
+                        this.error( exp.toString() + 'ok' );
+                    },
+                    */
+
+                    prompt: function( display ) {
+
+                        var lambada = cmder.prompt,
+                            dir = "C:\\Users\\Samuel";
+
+                        // stylize the result
+                        var ret = '[[;#74aa04;]%s]'.replace( /\%s/g, dir );
+
+                        display( [ ret, lambada ].join("\n") );
+                    }
+
+                },
+
+                events: {
+
+                    exit: function () {
+                        this.clear_history_state();
+                        this.reset();
+
+                        this.clear();
+                        return '';
+                    },
+
+                    focus: function () {
+                        // TODO: fix the logic
+
+                        // should not be called – causes stack overflow
+                        //$('.cmder--terminal-window').focus()
+                    },
+
+                    blur: function () {
+                        // this event is called if the inside of terminal loses focus
+                        //console.log('called onblur');
+
+                        var focuesdObj = $(':focus'),
+                            parent     = $('.cmder--terminal-window');
+
+                        if ( focuesdObj.length > 0)
+                        {
+
+                            // don't lose focus if the parent is focused
+                            if ( focuesdObj.is(parent) || parent.has(focuesdObj) )
+                                return false;
+
+                        }
+
+                    }
+
+                },
+
+                //selector: '.cmder--terminal',
+
+                // TODO: replace `cb` to `options.cb`
+                init: function(cb) {
+
+                    // TODO: use this.selector instead
+                    //       replace `cmder` instances to `this`
+
+                    var terminal = $('.cmder--terminal').terminal(cmder.commands, {
+
+                        name: cmder.id,
+                        // login: true,
+
+                        prompt: cmder.handler.prompt,
+                        greetings: [
+                            cmder.strings.WINDOWS_VER_STR,
+                            cmder.strings.WINDOWS_COPYRIGHT_STR,
+                            ''
+                        ].join("\n"),
+
+                        // exceptionHandler: cmder.events.exception,
+
+                        //onAfterCommand: cmder.handler.prompt,
+
+                        completion: true,
+
+                        onFocus: cmder.events.focus,
+                        onBlur: cmder.events.blur,
+
+                        onExit: cmder.events.exit
+
+                    });
+
+                    // workaround to assign the terminal handle to the object itself
+                    terminal.data('terminal', terminal);
+
+                    $('.cmder--terminal-window').on('focus', function(e) {
+                        $('.cmder--terminal').data('terminal').focus();
+                        //e.preventDefault();
+                    });
+
+                    // assign the handle to the cmder object
+                    this.handle = terminal;
+
+                    // TODO: if (options.readonly)
+                    //terminal.disable();
+
+                    // if a callback is defined, call it
+                    if ( typeof cb === 'function' ) cb(this);
+
+                }
+
+            };
+
+            /**
+             *
+             * Example effect of someone typing stuff
+             *
+             */
+
+            // TODO: merge back into the parent `cmder` object
+            var cmder_simulate = {
+
+                delay: 500,
+                // options: null,
+
+                runner: function(parent) {
+
+                    //console.log(arguments)
+
+                    //var handle = cmder.getHandle();
+                    var handle = parent.handle;
+
+                    handle.exec('cd');
+
+                }
+
+            }
+
+            $(function() {
+
+                // start keyboard polyfill
+                keyboardeventKeyPolyfill.polyfill();
+
+                // everything here will be called after the terminal is created
+                var cb = function() {
+
+                    // attach a callback after specified delay to simulate typing in some commands
+                    window.setTimeout(cmder_simulate.runner.bind(null, arguments[0]), cmder_simulate.delay);
+
+                }
+
+                // initialize cmder object with callback
+                cmder.init(cb);
+
+            });
+
+        </script>
+
+        <style>
+            /* ---------------------------------------- */
+
+            html, body, * { box-sizing: border-box; }
+
+            .cmder--terminal-window {
+                margin: auto;
+                outline: 0;
+                
+                max-width: 900px;
+                margin-top: 80px;
+            }
+
+            .cmder--terminal {
+                height: 450px;
+            }
+
+            .cmder--terminal {
+                /* used !important rule here to match the children .cmd and .terminal */
+                font-family: 'Consolas', 'Source Code Pro', monospace !important;
+
+                --size: 1;
+                --background: #272822;
+                --color: #fff;
+
+                --link-color: #0383f5;
+                --error-color: #f3044b;
+
+                /* display: inline-block; */
+                border: 1px solid #58595b;
+                margin: .5em; padding: 1em;
+                /* margin-top: 1em; */
+
+                background-color: #272822;
+            }
+
+            .cmder--terminal-window {
+                box-shadow: 0px 1px 5px rgba( 0,0,0, .2 );
+            }
+
+            .cmder--terminal .error, .cmder--terminal .error div {
+                color: var(--error-color) !important;
+            }
+
+            .cmder--terminal .cursor:not(.blink) {
+                background-color: var(--color);
+            }
+
+            /* .cmder--terminal:not(:focus-within) .cursor.blink */
+            .cmder--terminal .cursor.blink {
+                background-color: transparent;
+                border-left-width: 2px;
+                border-bottom-width: 0px;
+
+                -webkit-animation-name: terminal-bar;
+                   -moz-animation-name: terminal-bar;
+                    -ms-animation-name: terminal-bar;
+                        animation-name: terminal-bar;
+            }
+
+            /* ---------------------------------------- */
+
+            @import url('./fonts/marlett/font.css');
+
+            .cmder--terminal-titlebar {
+                padding: 0 .5em;
+                /* padding-bottom: 0.25em */;
+
+                /* font-size: 12px; */
+                user-select: none;
+                -webkit-user-select: none;
+
+                display: flex;
+            }
+
+            .cmder--terminal-titlebar-title {
+                flex-grow: 1;
+
+                color: #f3f3f3;
+
+                font-size: .85em;
+                padding-top: .65em;
+                padding-left: 1.05em;
+
+                user-select: none;
+                opacity: 0;
+            }
+
+            .cmder--terminal-titlebar-title > * {
+                display: inline-block;
+                vertical-align: bottom;
+            }
+
+            .cmder--terminal-titlebar-title img {
+                padding: 0 0.5em;
+
+                object-fit: contain;
+
+                padding: 0;
+                width: 1.4em; height: 1.4em;
+                margin-left: -.1em; margin-right: .2em;
+            }
+            
+            .cmder--terminal-titlebar-title span {
+                padding-bottom: .1em;
+            }
+
+            .cmder--terminal-titlebar-buttons {
+                flex-shrink: 1;
+                font-size: 0px;
+
+                padding-bottom: 0.25em;
+            }
+
+            .cmder--terminal-titlebar button {
+                text-align: center;
+                font-family: 'MarlettWeb', Marlett;
+
+                box-sizing: border-box;
+                display: inline-block;
+                font-size: 12px;
+
+                width: 2.5em;
+                height: 2em;
+                line-height: 20px;
+
+                border: none; outline: none;
+                background: transparent;
+                color: #2b2b2b;
+
+                cursor: default;
+                transition: background-color .1s ease, color .1s ease;
+                margin: 0; padding: 0;
+            }
+
+            .cmder--terminal-titlebar button:hover {
+                background-color: #919191;
+                color: #fff;
+            }
+
+            .cmder--terminal-titlebar button[role="close"] {
+                background-color: #c55252;
+                color: #fcfcfc;
+
+                width: 4.5em;
+            }
+            
+            .cmder--terminal-titlebar button[role="close"]:hover {
+                background-color: #ce5252;
+                color: #fff;
+            }
+
+            .cmder--terminal-titlebar button[role="close"]:active {
+                background-color: #b4534a;
+                color: #0e0d0d;
+            }
+
+            /* ---------------------------------------- */
+
+            body { background: url('bg.jpg') no-repeat center; }
+            body { background-size: cover; }
+
+            .cmder--terminal-window {
+                background: #6b6b6a;
+                border: 1px solid #535352;
+            }
+
+            html { height: 100%; }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="cmder--terminal-window" tabindex="0">
+
+            <div class="cmder--terminal-titlebar">
+
+                <label class="cmder--terminal-titlebar-title">
+                    <img src="cmder.ico" />
+                    <span>Cmder</span>
+                </label>
+
+                <div class="cmder--terminal-titlebar-buttons">
+                    <button role="minimize">0</button>
+                    <button role="maximize">1</button>
+                    <button role="close">r</button>
+                </div>
+
+            </div>
+
+            <div class="cmder--terminal">
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

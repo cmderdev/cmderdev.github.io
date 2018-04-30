@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>cmder | Console Emulator</title>
+    <title>Cmder | Console Emulator</title>
     <meta name="description" content="cmder is software package that provides great console experience even on Windows">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/main.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -30,8 +30,9 @@
 
         <main>
             <div class="row">
-                <h2 class="col-lg copy"> Cmder is a software package created out of pure frustration over the absence of nice console emulators on Windows. It is based on amazing software, and spiced up with the Monokai color scheme and a custom prompt layout, looking sexy from the
-                    start.
+                <h2 class="col-lg copy"> Cmder is a software package created out of pure frustration over the absence of nice console emulators on
+                    Windows. It is based on amazing software, and spiced up with the Monokai color scheme and a custom prompt
+                    layout, looking sexy from the start.
                 </h2>
             </div>
 
@@ -43,7 +44,7 @@
                         </div>
                         <h4>With help of the best</h4>
                         <p>Think about cmder more as a software package than a separate app. All the magic is happening through
-                            <a href="https://conemu.github.io">Conemu</a>. With enhancements from
+                            <a href="https://conemu.github.io">ConEmu</a>. With enhancements from
                             <a href="https://mridgers.github.io/clink/">Clink</a>.
                         </p>
                     </div>
@@ -52,7 +53,8 @@
                             <img src="img/bye_thumb.png" alt="Personally, I hate the absence of padding">
                         </div>
                         <h4>Total portability</h4>
-                        <p>Carry it with you on a USB stick or in the Cloud, so your settings, aliases and history can go anywhere you go. You will not see that ugly Windows prompt ever again.</p>
+                        <p>Carry it with you on a USB stick or in the Cloud, so your settings, aliases and history can go anywhere
+                            you go. You will not see that ugly Windows prompt ever again.</p>
                     </div>
                     <div class="col-md">
                         <div class="imgWrapper">
@@ -60,10 +62,10 @@
                         </div>
                         <h4>Git and others</h4>
                         <p>Oooh yes! If you decide to use the
-                            <em>slightly</em> bigger <a href="https://gitforwindows.org/">
-                        git-for-windows</a> version, you will have all Unix commands ready in PATH so that you can
-                            <code>git init</code>
-                            or
+                            <em>slightly</em> bigger
+                            <a href="https://gitforwindows.org/">
+                                git-for-windows</a> version, you will have all Unix commands ready in PATH so that you can
+                            <code>git init</code> or
                             <code>cat</code> instantly on every machine.
                         </p>
                     </div>
@@ -76,7 +78,7 @@
 
                 <div class="github">
                     <h4 id="latest-version">&nbsp;</h4>
-                    <a href="https://github.com/cmderdev/cmder">GitHub Repo</a> (for issues/requests/source)
+                    <a href="https://github.com/cmderdev/cmder">GitHub Repository</a> (for issues/requests/source)
                 </div>
 
                 <div class="row">
@@ -90,9 +92,14 @@
                         <a class="btn btn-primary" id="full" onclick="_gaq.push(['_trackEvent', 'Download', 'full'])" href="https://github.com/cmderdev/cmder/releases/latest">
                             Download Full
                         </a>
-                        <small>(with Git for Windows) <span id="full-size">~100MB</span></small>
+                        <small>(with Git for Windows)
+                            <span id="full-size">~100MB</span>
+                        </small>
                         <small>
-                            or <em><a id="7z" onclick="_gaq.push(['_trackEvent', 'Download', 'full', '7z'])" href="https://github.com/cmderdev/cmder/releases/latest"><span id="7z-size">~52MB</span> 7z</a></em>
+                            <em> or </em>
+                            <a id="7z" onclick="_gaq.push(['_trackEvent', 'Download', 'full', '7z'])" href="https://github.com/cmderdev/cmder/releases/latest">
+                                <span id="7z-size">~52MB</span> 7z
+                            </a>
                         </small>
                     </div>
                 </div>
@@ -100,7 +107,7 @@
                 <div id="installation">
                     <h4>Installation</h4>
                     <ol>
-                        <li>Unzip (can take a while) </li>
+                        <li>Unzip</li>
                         <li>(optional) Place your own executable files into the
                             <code>bin</code> folder to be injected into your PATH.</li>
                         <li>Run
@@ -141,7 +148,7 @@
                                 <code>Alt + Enter</code> : Fullscreen</li>
                         </ul>
                     </div>
-    
+
                     <div class="col-lg">
                         <h4>Shell</h4>
                         <ul>
@@ -173,21 +180,29 @@
                             <em>doskeys</em> in
                             <code>/config/aliases</code>. One per line. And make sure to handle arguments by putting argument variables
                             <code>$*</code> somewhere.</p>
-    
+
                         <h4>Updating + Building</h4>
                         <p>There is not much going on here. But if you want to get most recent updates for Conemu just tick
-                            <em>auto-updating</em> in preferences. If you want to clone the repo and build it yourself, you will need
+                            <em>auto-updating</em> in preferences. If you want to clone the repo and build it yourself, you will
+                            need
                             <em>PowerShell >=3.0 and 7z</em>. When you are set on that, just run
                             <code>scripts/build.ps1</code>.</p>
                     </div>
                     <div class="col-lg">
                         <h4>Other documentations</h4>
-                        <p>If you have trouble with anything I am happy to help. But you will have much better chances to find solutions on the pages of the upstream projects. Those are:</p>
-                            <ul>
-                                <li>Console emulator ~ <a href="https://conemu.github.io/">Conemu</a></li>
-                                <li>Cmd.exe enhancements ~ <a href="https://mridgers.github.io/clink/">clink</a></li>
-                                <li>Unix tools on windows ~ <a href="https://gitforwindows.org/">git for windows</a></li>
-                            </ul>
+                        <p>If you have trouble with anything I am happy to help. But you will have much better chances to find
+                            solutions on the pages of the upstream projects. Those are:</p>
+                        <ul>
+                            <li>Console emulator ~
+                                <a href="https://conemu.github.io/">Conemu</a>
+                            </li>
+                            <li>Cmd.exe enhancements ~
+                                <a href="https://mridgers.github.io/clink/">clink</a>
+                            </li>
+                            <li>Unix tools on windows ~
+                                <a href="https://gitforwindows.org/">git for windows</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -197,8 +212,12 @@
     </div>
 
     <footer class="container">
-        Created by <a href="https://github.com/samvasko">Samuel Vasko</a>
-        <br> Maintained by <a href="https://github.com/MartiUK">Martin Kemp</a>, <a href="https://github.com/cmderdev">the cmderdev team</a> and more outstanding <a href="https://github.com/cmderdev/cmder/graphs/contributors">contributors</a>.
+        Created by
+        <a href="https://github.com/samvasko">Samuel Vasko</a>
+        <br> Maintained by
+        <a href="https://github.com/MartiUK">Martin Kemp</a>,
+        <a href="https://github.com/cmderdev">the cmderdev team</a> and more outstanding
+        <a href="https://github.com/cmderdev/cmder/graphs/contributors">contributors</a>.
     </footer>
 
     <script type="text/javascript">
@@ -206,7 +225,7 @@
         _gaq.push(['_setAccount', 'UA-35740802-2']);
         _gaq.push(['_trackPageview']);
 
-        (function() {
+        (function () {
             var ga = document.createElement('script');
             ga.type = 'text/javascript';
             ga.async = true;
@@ -220,11 +239,11 @@
         $(document).ready(function () {
             getLatestReleases();
         })
-        
-        function getSizeInMb( bytes, decimal ) {
+
+        function getSizeInMb(bytes, decimal) {
             var decimal = decimal || 0;
             var size = (bytes / Math.pow(2, 20));
-            return '~' + ( decimal == 0 ? Math.ceil(size) : size.toFixed(decimal) ) + 'MB';
+            return '~' + (decimal == 0 ? Math.ceil(size) : size.toFixed(decimal)) + 'MB';
         }
 
         function getLatestReleases() {
@@ -234,15 +253,15 @@
                     switch (asset.name) {
                         case "cmder.zip":
                             $("#full").attr("href", asset.browser_download_url);
-                            $("#full-size").html( getSizeInMb(asset.size) );
+                            $("#full-size").html(getSizeInMb(asset.size));
                             break;
                         case "cmder_mini.zip":
                             $("#mini").attr("href", asset.browser_download_url);
-                            $("#mini-size").html( getSizeInMb(asset.size, 1) );
+                            $("#mini-size").html(getSizeInMb(asset.size, 1));
                             break;
                         case "cmder.7z":
                             $("#7z").attr("href", asset.browser_download_url);
-                            $("#7z-size").html( getSizeInMb(asset.size) );
+                            $("#7z-size").html(getSizeInMb(asset.size));
                             break;
                     }
                 }

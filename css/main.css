@@ -39,6 +39,12 @@ main > section {
     widows: 100%;
 }
 
+@media (max-width: 768px) {
+    body > div.container, body > div.container-fluid {
+        margin-top: 0;
+    }
+}
+
 /* -------------- Typography -------------- */
 
 a {

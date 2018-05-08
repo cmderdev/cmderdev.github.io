@@ -1,5 +1,10 @@
 /* ==========================================================================
-   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+                       _           
+     ___ _ __ ___   __| | ___ _ __ 
+    / __| '_ ` _ \ / _` |/ _ \ '__|
+    | (__| | | | | | (_| |  __/ |   
+    \___|_| |_| |_|\__,_|\___|_|   
+
    ========================================================================== */
 
 html, button, input, select, textarea {
@@ -21,23 +26,23 @@ body {
     font-family: 'Lato', Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     line-height: 1.4;
 }
-.wrapper {
+body > div.container, body > div.container-fluid {
     margin: 2em auto;
     padding: 0 0 2em 0;
-    width: 80%;
     background-color: #fff;
     -webkit-box-shadow: 0 0 8px 3px #eee;
     -moz-box-shadow: 0 0 8px 3px #eee;
     box-shadow: 0 0 8px 3px #eee;
 }
-@media (max-width: 480px) {
-    .wrapper {
-        width: 98%;
-    }
-}
-.container {
+main > section {
     margin: 0 auto;
     widows: 100%;
+}
+
+@media (max-width: 768px) {
+    body > div.container, body > div.container-fluid {
+        margin-top: 0;
+    }
 }
 
 /* -------------- Typography -------------- */
@@ -45,11 +50,8 @@ body {
 a {
     color: #1E90FF;
 }
-p {
-    padding-left: 8px;
-}
 h2 {
-    padding: 0 1em;
+    padding: .5em 1em;
     color: #444;
     text-align: center;
     font-weight: 300;
@@ -82,35 +84,59 @@ h4 {
     font-size: 1.1em;
     text-rendering: optimizeLegibility;
 }
-button {
+.btn {
     display: block;
     padding: 12px 0;
     width: 100%;
     border: 1px solid #eee;
     border-radius: 4px;
-    background-color: #C4C4C4;
-    box-shadow: 1px 1px 1px 0px #ddd, inset 0 0 -3px rgba(0, 0, 0, 0.02);
+    background-color: #888;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.02) !important;
     color: #fff;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
     font-size: 1.1em;
+    outline: none;
+    text-decoration: none;
     -webkit-transition: background-color 0.3s;
     -moz-transition: background-color 0.3s;
     -ms-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
 }
-button:hover {
+.btn:active:focus {
+    outline: none;
+    box-shadow: none;
+}
+.btn.btn-default {
+    border: 1px solid #eee;
+    background-color: #C4C4C4;
+    color: #eee;
+}
+.btn.btn-default:hover {
+    border: 1px solid #eee;
     background-color: #ccc;
-    box-shadow: 0px 0px 1px 0px #ddd;
+    color: #eee;
 }
-button.gray {
-    float: right;
+.btn.btn-default:active {
+    border: 1px solid #eee;
+    background-color: #bbb;
+    color: #eee;
 }
-button.blue {
+.btn.btn-primary {
+    border: 1px solid #eee;
     background-color: #3498db;
+    color: #eee;
 }
-button.blue:hover {
+.btn.btn-primary:hover {
+    border: 1px solid #eee;
     background-color: #5dade2;
+    color: #eee;
+}
+.btn.btn-primary:active {
+    /* the !important rule used to over-write bs's :disabled attr */
+    border: 1px solid #eee !important;
+    background-color: #1E90FF !important;
+    color: #eee !important;
 }
 
 /* -------------- Modules -------------- */
@@ -162,7 +188,8 @@ main {
 }
 .information p {
     margin: 0;
-    padding: 0 8px;
+    padding: 0 .5em;
+    padding-bottom: 3em;
     line-height: 1.4em;
 }
 .download {
@@ -170,8 +197,8 @@ main {
     max-width: 35em;
     text-align: center;
 }
-.download > .bit-2 {
-    margin: 1.5em 0 0 0;
+.download > .github {
+    margin-bottom: 1.5em;
 }
 #installation {
     text-align: left;
@@ -188,6 +215,7 @@ footer {
 code {
     padding: 1px 3px;
     border-radius: 2px;
+    color: #222;
     background-color: #eee;
     font-size: 0.9em;
     font-family: Consolas, monaco, monospace;
@@ -203,52 +231,4 @@ ul ol {
     margin: 0.5em 0;
     padding: 0 0 0 30px;
     list-style: none;
-}
-
-/* lemonade.css */
-
-*, *:after, *:before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-}
-.container:after {
-    content: "";
-    display: table;
-    clear: both
-}
-.bit-1 {
-    width: 100%
-}
-.bit-2 {
-    width: 50%
-}
-.bit-3 {
-    width: 33.33%;
-}
-@media(max-width:480px) {
-    .bit-1, .bit-2, .bit-3, {
-        width: 100%
-    }
-}
-@media(min-width:480px) and (max-width:800px) {
-    .bit-1, .bit-2, .bit-3, .bit-5, .bit-7, .bit-9, .bit-11 {
-        width: 100%
-    }
-}
-@media(min-width:800px) and (max-width:1100px) {
-    .bit-2, .bit-7 {
-        width: 100%
-    }
-}
-[class*='bit-'] {
-    float: left;
-    padding: 5px;
-}
-
-/* Floats last ".bit-" to the right */
-
-[class*='bit-']:last-of-type {
-    padding-right: 5px;
-    float: right;
 }

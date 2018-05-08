@@ -1,0 +1,7 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+*.html text eol=crlf
+*.htm text eol=crlf
+*.css text eol=crlf
+*.js text eol=crlf
+*.md text eol=lf

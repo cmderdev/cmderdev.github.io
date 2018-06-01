@@ -189,18 +189,26 @@
                             <code>scripts/build.ps1</code>.</p>
                     </div>
                     <div class="col-lg">
-                        <h4>Other documentations</h4>
-                        <p>If you have trouble with anything I am happy to help. But you will have much better chances to find
+                        <h4>Documentations</h4>
+                        <p>Most of the Cmder functionality are documented in the
+                            <a href="https://github.com/cmderdev/cmder/blob/master/README.md">readme</a> file on GitHub.
+                            We have extented help available in <a href="https://github.com/cmderdev/cmder/wiki">Cmder Wiki</a>, also regarding integration.
+                        </p>
+                        <p>
+                            If you're having trouble with anything, please have a look at the GitHub
+                            <a href="https://github.com/cmderdev/cmder/issues?q=is:issue">issues</a>, or create
+                            <a href="https://github.com/cmderdev/cmder/issues/new">a new one</a>. <br />
+                            We'll be happy to help, but you might have a better chance to find
                             solutions on the pages of the upstream projects. Those are:</p>
                         <ul>
                             <li>Console emulator ~
-                                <a href="https://conemu.github.io/">Conemu</a>
+                                <a target="_blank" href="https://conemu.github.io/">Conemu</a>
                             </li>
                             <li>Cmd.exe enhancements ~
-                                <a href="https://mridgers.github.io/clink/">clink</a>
+                                <a target="_blank" href="https://mridgers.github.io/clink/">clink</a>
                             </li>
                             <li>Unix tools on windows ~
-                                <a href="https://gitforwindows.org/">git for windows</a>
+                                <a target="_blank" href="https://gitforwindows.org/">git for windows</a>
                             </li>
                         </ul>
                     </div>
@@ -224,7 +232,6 @@
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-35740802-2']);
         _gaq.push(['_trackPageview']);
-
         (function () {
             var ga = document.createElement('script');
             ga.type = 'text/javascript';
@@ -239,13 +246,11 @@
         $(document).ready(function () {
             getLatestReleases();
         })
-
         function getSizeInMb(bytes, decimal) {
             var decimal = decimal || 0;
             var size = (bytes / Math.pow(2, 20));
             return '~' + (decimal == 0 ? Math.ceil(size) : size.toFixed(decimal)) + 'MB';
         }
-
         function getLatestReleases() {
             $.getJSON("https://api.github.com/repos/cmderdev/cmder/releases/latest").done(function (release) {
                 $("#latest-version").html("Latest Version: " + release.name);

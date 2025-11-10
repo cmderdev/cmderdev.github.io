@@ -8,13 +8,12 @@
     <meta name="description" content="cmder is software package that provides great console experience even on Windows">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic' type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/main.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpUvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" type="text/css">
+    <link rel="stylesheet" href="css/main.min.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,7 +24,7 @@
                 <img src="img/logo.svg" alt="Almost wish there was a number 3 near the lambda, don't you think?">
             </div>
             <div id="pitch">Portable console emulator for Windows</div>
-            <img id="title_image" src="img/main.png" height="732" width="1366" alt="Mmmm Monokai.">
+            <img id="title-image" src="img/main.png" height="732" width="1366" alt="Mmmm Monokai.">
         </header>
 
         <main>
@@ -127,16 +126,16 @@
                         <h4>Tab manipulation</h4>
                         <ul>
                             <li>
-                                <code>Ctrl + `</code> :
+                                <kbd>Ctrl</kbd> + <kbd>`</kbd> :
                                 <strong>Global</strong> Summon from taskbar</li>
                             <li>
-                                <code>Win + Alt + p</code> : Preferences (Or right click on title bar)</li>
+                                <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> : Preferences (Or right click on title bar)</li>
                             <li>
-                                <code>Ctrl + t</code> : New tab dialog (maybe you want to open cmd as admin?)</li>
+                                <kbd>Ctrl</kbd> + <kbd>T</kbd> : New tab dialog (maybe you want to open cmd as admin?)</li>
                             <li>
-                                <code>Ctrl + w</code> : Close tab</li>
+                                <kbd>Ctrl</kbd> + <kbd>W</kbd> : Close tab</li>
                             <li>
-                                <code>Shift + Alt + number</code> : Fast new tab:
+                                <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>number</kbd> : Fast new tab:
                                 <ol>
                                     <li>
                                         <code>1.</code> CMD</li>
@@ -145,7 +144,7 @@
                                 </ol>
                             </li>
                             <li>
-                                <code>Alt + Enter</code> : Fullscreen</li>
+                                <kbd>Alt</kbd> + <kbd>Enter</kbd> : Fullscreen</li>
                         </ul>
                     </div>
 
@@ -153,15 +152,15 @@
                         <h4>Shell</h4>
                         <ul>
                             <li>
-                                <code>Ctrl + Alt + u</code> : Traverse up in directory structure (lovely feature!)</li>
+                                <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>U</kbd> : Traverse up in directory structure (lovely feature!)</li>
                             <li>
-                                <code>End, Home, Ctrl</code> : Traverse text as usual on Windows</li>
+                                <kbd>End</kbd>, <kbd>Home</kbd>, <kbd>Ctrl</kbd> : Traverse text as usual on Windows</li>
                             <li>
-                                <code>Ctrl + r</code> : History search</li>
+                                <kbd>Ctrl</kbd> + <kbd>R</kbd> : History search</li>
                             <li>
-                                <code>Shift + mouse</code> : Select and copy text from buffer</li>
+                                <kbd>Shift</kbd> + mouse : Select and copy text from buffer</li>
                             <li>
-                                <code>Right click / Ctrl + Shift + v</code> : Paste text </li>
+                                Right click / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> : Paste text </li>
                         </ul>
                     </div>
                 </div>
@@ -185,7 +184,7 @@
                         <p>There is not much going on here. But if you want to get most recent updates for Conemu just tick
                             <em>auto-updating</em> in preferences. If you want to clone the repo and build it yourself, you will
                             need
-                            <em>PowerShell >=3.0 and 7z</em>. When you are set on that, just run
+                            <em>PowerShell &gt;=3.0 and 7z</em>. When you are set on that, just run
                             <code>scripts/build.ps1</code>.</p>
                     </div>
                     <div class="col-lg">

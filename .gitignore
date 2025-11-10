@@ -1,9 +1,23 @@
 # =========================
-# Cmder.net Home page
+# Cmder.app Home page
 # =========================
 
 # Reserved hidden directory
 .*_space
+
+# =========================
+# Build and Dependencies
+# =========================
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 
 # =========================
 # Operating System Files

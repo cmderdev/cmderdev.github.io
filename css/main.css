@@ -6,8 +6,8 @@
     \___|_| |_| |_|\__,_|\___|_|   
    ========================================================================== */
 
-html, button, input, select, textarea {
-    color: #222;
+html, body, button, input, select, textarea {
+    color: #212529;
 }
 ::-moz-selection {
     background: #b3d4fc;
@@ -231,4 +231,100 @@ ul ol {
     margin: 0.5em 0;
     padding: 0 0 0 30px;
     list-style: none;
+}
+
+/* -------------- Dark Mode -------------- */
+
+@media (prefers-color-scheme: dark) {
+    html, body, button, input, select, textarea {
+        color: #e0e0e0;
+    }
+    
+    body {
+        background-color: #1a1a1a;
+    }
+    
+    body > div.container, body > div.container-fluid {
+        background-color: #2a2a2a;
+        -webkit-box-shadow: 0 0 8px 3px #000;
+        -moz-box-shadow: 0 0 8px 3px #000;
+        box-shadow: 0 0 8px 3px #000;
+    }
+    
+    a {
+        color: #5dade2;
+    }
+    
+    h2 {
+        color: #d0d0d0;
+    }
+    
+    h2:before, h2:after {
+        background-color: #444;
+    }
+    
+    h3 {
+        background-color: #333;
+        color: #e0e0e0;
+    }
+    
+    h4 {
+        color: #d0d0d0;
+    }
+    
+    #pitch {
+        color: #e0e0e0;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    .btn {
+        border: 1px solid #444;
+        background-color: #555;
+        color: #e0e0e0;
+    }
+    
+    .btn.btn-default {
+        border: 1px solid #444;
+        background-color: #4a4a4a;
+        color: #e0e0e0;
+    }
+    
+    .btn.btn-default:hover {
+        border: 1px solid #555;
+        background-color: #555;
+        color: #e0e0e0;
+    }
+    
+    .btn.btn-default:active {
+        border: 1px solid #666;
+        background-color: #606060;
+        color: #e0e0e0;
+    }
+    
+    .btn.btn-primary {
+        border: 1px solid #2980b9;
+        background-color: #2980b9;
+        color: #e0e0e0;
+    }
+    
+    .btn.btn-primary:hover {
+        border: 1px solid #3498db;
+        background-color: #3498db;
+        color: #e0e0e0;
+    }
+    
+    .btn.btn-primary:active {
+        border: 1px solid #1E90FF !important;
+        background-color: #1E90FF !important;
+        color: #e0e0e0 !important;
+    }
+    
+    code {
+        color: #e0e0e0;
+        background-color: #3a3a3a;
+    }
+    
+    footer {
+        color: #b0b0b0;
+    }
 }

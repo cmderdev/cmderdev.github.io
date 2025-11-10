@@ -1,0 +1,41 @@
+{
+  "name": "cmderdev.github.io",
+  "version": "2.0.0",
+  "description": "Cmder website - Portable console emulator for Windows",
+  "scripts": {
+    "build:scss": "sass scss/main.scss css/main.css --style=expanded --no-source-map",
+    "build:css": "npm run build:scss && postcss css/main.css -o css/main.css --no-map",
+    "build:min": "npm run build:css && postcss css/main.css -o css/main.min.css --no-map",
+    "build": "npm run build:min",
+    "watch": "sass scss/main.scss css/main.css --watch --style=expanded --no-source-map",
+    "lint:scss": "stylelint 'scss/**/*.scss'",
+    "lint:html": "htmlhint '*.html'",
+    "test": "npm run lint:scss && npm run lint:html && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmderdev/cmderdev.github.io.git"
+  },
+  "keywords": [
+    "cmder",
+    "console",
+    "terminal",
+    "windows"
+  ],
+  "author": "Samuel Vasko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cmderdev/cmder/issues"
+  },
+  "homepage": "https://cmder.app",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "htmlhint": "^1.1.4",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.69.5",
+    "stylelint": "^16.0.2",
+    "stylelint-config-standard-scss": "^12.0.0"
+  }
+}

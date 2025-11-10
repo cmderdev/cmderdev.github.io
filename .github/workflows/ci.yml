@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install Node dependencies
+      run: npm ci
+    
+    - name: Lint SCSS
+      run: npm run lint:scss
+    
+    - name: Lint HTML
+      run: npm run lint:html
+    
+    - name: Build CSS
+      run: npm run build
+    
+    - name: Build Jekyll site
+      run: bundle exec jekyll build
+      env:
+        NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+    
+    - name: Test with html-proofer
+      run: bundle exec htmlproofer ./_site --disable-external

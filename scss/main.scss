@@ -54,12 +54,20 @@
   --line-height-base: 1.4;
   
   // Effects
-  --border-radius-sm: 2px;
-  --border-radius-md: 4px;
-  --box-shadow-container: 0 0 8px 3px var(--color-shadow);
-  --box-shadow-button: inset 0 0 3px rgb(0 0 0 / 2%);
-  --text-shadow-button: 0 0 1px rgb(0 0 0 / 20%);
-  --text-shadow-pitch: 1px 1px 0 rgb(88 88 88 / 50%);
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.25rem;
+  --border-radius-lg: 0.375rem;
+  --box-shadow-container: 0 0 0.5em 0.1875em var(--color-shadow);
+  --box-shadow-button: inset 0 0 0.1875em rgb(0 0 0 / 2%);
+  --box-shadow-kbd: inset 0 -0.0625em 0 var(--color-border);
+  --text-shadow-button: 0 0 0.0625em rgb(0 0 0 / 20%);
+  --text-shadow-pitch: 0.0625em 0.0625em 0 rgb(88 88 88 / 50%);
+  
+  // Keyboard key styling
+  --color-kbd-text: var(--color-text);
+  --color-kbd-bg: var(--color-bg-code);
+  --color-kbd-border: var(--color-border);
+  --kbd-padding: 0.25em 0.5em;
   
   // Transitions
   --transition-fast: 150ms;
@@ -90,7 +98,9 @@
     --color-bg-code: #3a3a3a;
     --color-border: #444;
     --color-shadow: #000;
-    --text-shadow-pitch: 1px 1px 0 rgb(0 0 0 / 80%);
+    --text-shadow-pitch: 0.0625em 0.0625em 0 rgb(0 0 0 / 80%);
+    --color-kbd-bg: #3a3a3a;
+    --color-kbd-border: #555;
   }
 }
 
@@ -178,7 +188,7 @@ h2 {
     display: block;
     margin: var(--spacing-xs) auto;
     width: 50%;
-    height: 1px;
+    height: 0.0625em;
     background-color: var(--color-border);
     content: "";
     transition: background-color var(--transition-normal) var(--transition-timing);
@@ -187,7 +197,7 @@ h2 {
 
 h3 {
   margin: 2.3em 0 0;
-  padding: 8px;
+  padding: 0.5em;
   background-color: var(--color-bg-code);
   color: var(--color-text-lighter);
   text-indent: 0.2em;
@@ -200,7 +210,7 @@ h3 {
 h4 {
   margin: var(--spacing-sm) 0;
   color: var(--color-heading);
-  text-indent: 8px;
+  text-indent: 0.5em;
   letter-spacing: 0.1em;
   font-size: var(--font-size-h4);
   font-weight: var(--font-weight-bold);
@@ -214,9 +224,9 @@ h4 {
 
 .btn {
   display: block;
-  padding: 12px 0;
+  padding: 0.75em 0;
   width: 100%;
-  border: 1px solid var(--color-border);
+  border: 0.0625em solid var(--color-border);
   border-radius: var(--border-radius-md);
   background-color: #888;
   box-shadow: var(--box-shadow-button) !important;
@@ -231,8 +241,8 @@ h4 {
               box-shadow var(--transition-fast) var(--transition-timing);
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgb(0 0 0 / 15%) !important;
+    transform: translateY(-0.125em);
+    box-shadow: 0 0.25em 0.5em rgb(0 0 0 / 15%) !important;
   }
   
   &:active {
@@ -246,7 +256,7 @@ h4 {
   }
   
   &.btn-default {
-    border: 1px solid var(--color-border);
+    border: 0.0625em solid var(--color-border);
     background-color: var(--color-bg-button-default);
     color: var(--color-border);
     
@@ -260,7 +270,7 @@ h4 {
   }
   
   &.btn-primary {
-    border: 1px solid var(--color-border);
+    border: 0.0625em solid var(--color-border);
     background-color: var(--color-bg-button-primary);
     color: var(--color-border);
     
@@ -269,7 +279,7 @@ h4 {
     }
     
     &:active {
-      border: 1px solid var(--color-border) !important;
+      border: 0.0625em solid var(--color-border) !important;
       background-color: var(--color-bg-button-primary-active) !important;
       color: var(--color-border) !important;
     }
@@ -287,8 +297,8 @@ h4 {
                 box-shadow var(--transition-normal) var(--transition-timing);
     
     &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgb(0 0 0 / 10%);
+      transform: translateY(-0.25em);
+      box-shadow: 0 0.5em 1em rgb(0 0 0 / 10%);
     }
   }
   
@@ -346,7 +356,7 @@ main {
 }
 
 #pitch {
-  top: 100px;
+  top: 6.25em;
   color: var(--color-text-lighter);
   text-shadow: var(--text-shadow-pitch);
   font-style: italic;
@@ -354,10 +364,10 @@ main {
 }
 
 #logo {
-  top: 50px;
+  top: 3.125em;
   
   img {
-    height: 40px;
+    height: 2.5em;
     transition: transform var(--transition-normal) var(--transition-timing);
     
     &:hover {
@@ -401,11 +411,11 @@ footer {
 }
 
 // ========================================
-// Code
+// Code and Keyboard Keys
 // ========================================
 
 code {
-  padding: 1px 3px;
+  padding: 0.0625em 0.1875em;
   border-radius: var(--border-radius-sm);
   color: var(--color-text-lighter);
   background-color: var(--color-bg-code);
@@ -414,17 +424,43 @@ code {
   transition: background-color var(--transition-normal) var(--transition-timing);
 }
 
+kbd {
+  display: inline-block;
+  padding: var(--kbd-padding);
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  color: var(--color-kbd-text);
+  vertical-align: middle;
+  background-color: var(--color-kbd-bg);
+  border: 0.0625em solid var(--color-kbd-border);
+  border-bottom-color: var(--color-kbd-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-kbd);
+  transition: background-color var(--transition-normal) var(--transition-timing),
+              border-color var(--transition-normal) var(--transition-timing),
+              transform var(--transition-fast) var(--transition-timing);
+  
+  &:hover {
+    transform: translateY(-0.0625em);
+  }
+  
+  &:active {
+    transform: translateY(0.0625em);
+    box-shadow: none;
+  }
+}
+
 // ========================================
 // Lists
 // ========================================
 
 ul {
-  padding-left: 8px;
+  padding-inline-start: 0.5em;
   list-style: none;
   
   ol {
     margin: var(--spacing-xs) 0;
-    padding: 0 0 0 30px;
+    padding: 0 0 0 1.875em;
     list-style: none;
   }
 }

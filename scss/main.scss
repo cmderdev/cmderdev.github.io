@@ -258,7 +258,7 @@ h4 {
   &.btn-default {
     border: 0.0625em solid var(--color-border);
     background-color: var(--color-bg-button-default);
-    color: var(--color-border);
+    color: var(--color-text);
     
     &:hover {
       background-color: var(--color-bg-button-default-hover);
@@ -272,7 +272,7 @@ h4 {
   &.btn-primary {
     border: 0.0625em solid var(--color-border);
     background-color: var(--color-bg-button-primary);
-    color: var(--color-border);
+    color: #fff;
     
     &:hover {
       background-color: var(--color-bg-button-primary-hover);
@@ -281,7 +281,7 @@ h4 {
     &:active {
       border: 0.0625em solid var(--color-border) !important;
       background-color: var(--color-bg-button-primary-active) !important;
-      color: var(--color-border) !important;
+      color: #fff !important;
     }
   }
 }
@@ -329,11 +329,6 @@ header {
   margin: 0 auto;
   width: 100%;
   height: auto;
-  transition: transform var(--transition-slow) var(--transition-timing);
-  
-  &:hover {
-    transform: scale(1.02);
-  }
 }
 
 @media (width <= 1000px) {
@@ -352,6 +347,7 @@ main {
   position: absolute;
   width: 100%;
   text-align: center;
+  z-index: 1;
   transition: opacity var(--transition-normal) var(--transition-timing);
 }
 
@@ -368,11 +364,6 @@ main {
   
   img {
     height: 2.5em;
-    transition: transform var(--transition-normal) var(--transition-timing);
-    
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 }
 

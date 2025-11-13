@@ -17,6 +17,33 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+      
+    - name: Install Node dependencies
+      run: npm ci
+      
+    - name: Build CSS
+      run: npm run build:css
+      
+    - name: Verify CSS is up to date
+      run: |
+        # Check if the built CSS matches what's committed
+        if ! git diff --quiet css/main.min.css; then
+          echo "❌ Error: css/main.min.css is out of date!"
+          echo "The committed minified CSS doesn't match the SCSS source."
+          echo ""
+          echo "Please run 'npm run build:css' and commit the updated CSS file."
+          echo ""
+          echo "Differences found:"
+          git diff css/main.min.css
+          exit 1
+        fi
+        echo "✅ CSS is up to date with SCSS source"
+      
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:

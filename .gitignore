@@ -1,5 +1,5 @@
 # =========================
-# Cmder.net Home page
+# Cmder.app Home page
 # =========================
 
 # Reserved hidden directory
@@ -15,6 +15,13 @@ _site/
 vendor/
 .bundle/
 Gemfile.lock
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Generated CSS source maps (keep the minified CSS for GitHub Pages)
+css/*.map
 
 # =========================
 # Operating System Files

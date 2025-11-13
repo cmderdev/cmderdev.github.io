@@ -9,6 +9,10 @@
 html, body, button, input, select, textarea {
     color: #212529;
 }
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;

@@ -5,6 +5,17 @@
 # Reserved hidden directory
 .*_space
 
+# Jekyll build artifacts
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+vendor/
+.bundle/
+Gemfile.lock
+
 # =========================
 # Operating System Files
 # =========================

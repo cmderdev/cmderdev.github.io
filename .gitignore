@@ -20,8 +20,8 @@ Gemfile.lock
 node_modules/
 package-lock.json
 
-# Generated CSS
-css/
+# Generated CSS source maps (keep the minified CSS for GitHub Pages)
+css/*.map
 
 # =========================
 # Operating System Files

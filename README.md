@@ -7,7 +7,7 @@ The cmder.net page.
 
 ### Building CSS
 
-This project uses SCSS for styling. The source files are in `_sass/` and the compiled CSS is generated in `css/`.
+This project uses SCSS for styling. The source files are in `scss/` and the compiled CSS is generated in `css/`.
 
 To build the CSS:
 ```bash

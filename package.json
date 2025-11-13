@@ -4,8 +4,8 @@
   "description": "The cmder.net page.",
   "main": "index.js",
   "scripts": {
-    "build:css": "sass _sass/main.scss css/main.min.css --style=compressed",
-    "watch:css": "sass _sass/main.scss css/main.min.css --watch --style=compressed",
+    "build:css": "sass scss/main.scss css/main.min.css --style=compressed",
+    "watch:css": "sass scss/main.scss css/main.min.css --watch --style=compressed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

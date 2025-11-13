@@ -1,4 +1,4 @@
 # cmderdev.github.io
 The cmder.net page.
 
-[![Build Status](https://travis-ci.org/cmderdev/cmderdev.github.io.svg?branch=master)](https://travis-ci.org/cmderdev/cmderdev.github.io)
+[![CI](https://github.com/cmderdev/cmderdev.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/cmderdev/cmderdev.github.io/actions/workflows/ci.yml)

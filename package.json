@@ -1,0 +1,17 @@
+{
+  "name": "cmderdev.github.io",
+  "version": "1.0.0",
+  "description": "The cmder.net page.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass _sass/main.scss css/main.min.css --style=compressed",
+    "watch:css": "sass _sass/main.scss css/main.min.css --watch --style=compressed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.94.0"
+  }
+}

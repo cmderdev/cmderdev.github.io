@@ -13,10 +13,6 @@ html, body, button, input, select, textarea {
     background: #b3d4fc;
     text-shadow: none;
 }
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
 img {
     vertical-align: middle;
 }

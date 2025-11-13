@@ -1,7 +1,7 @@
 {
   "name": "cmderdev.github.io",
   "version": "1.0.0",
-  "description": "The cmder.net page.",
+  "description": "The cmder.app page.",
   "main": "index.js",
   "scripts": {
     "build:css": "sass scss/main.scss css/main.min.css --style=compressed",
